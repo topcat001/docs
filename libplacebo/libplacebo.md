@@ -15,7 +15,7 @@ Verify, build, and install:
 ```
 meson configure $DIR
 ninja -C$DIR
-ninja -Cbuild install
+ninja -C$DIR install
 ```
 
 Shell environment setup in .profile:
