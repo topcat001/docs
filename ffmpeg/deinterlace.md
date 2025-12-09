@@ -39,5 +39,12 @@ The following command only encodes to `h264`, preserving the original interlaced
 ffmpeg -i interlaced.mkv -c:v libx264 -preset slow -crf 18 -tune film -flags +ilme+ildct -alternate_scan 1 -c:a copy -c:s copy out.mkv
 ```
 
+# Encode soft telecine NTSC video:
+This is particularly simple, since the source frames are already progressive. We only need to set the output frame rate correctly. In the
+following example, the input `MKV` was created with `MakeMKV` preserving the source video exactly:
+```
+ffmpeg -hide_banner -i in.mkv -map 0:v:0 -map 0:a:0 -map 0:s:3 -r 24000/1001 -c:v libx264 -preset slow -crf 18 -tune film -c:a copy -c:s copy out.mkv
+```
+
 [Markdown comment example]::
 [ vim:set textwidth=140 spell:]::
